@@ -10,6 +10,10 @@ export const config = {
       : "http://localhost:3000",
   headerLinks: [
     {
+      title: "About",
+      href: "/about",
+    },
+    {
       title: "Contact",
       href: "https://forms.gle/nrXyTGFiD1ApmUAu7",
     },
