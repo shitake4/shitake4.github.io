@@ -7,6 +7,7 @@ import {Member} from "@src/types";
 import {GetStaticProps} from "@node_modules/next";
 import {members} from "@members";
 import {getMemberById, getMemberPostsById} from "@src/utils/helper";
+import {config} from "@site.config";
 
 type Props = {
   member: Member;
@@ -26,7 +27,7 @@ const Page: NextPage<Props> = (props) => {
               このサイトはこれまで私が投稿した記事を一覧にまとめて表示しています。
             </p>
             <p>
-              更新が気になる方はRSSを登録して頂ければnote、Zenn、Qiita、はてなブログなどに投稿した通知を受け取ることができます。
+              更新が気になる方は<a href={`${config.siteRoot}/feed`}>RSSを登録</a>して頂ければnote、Zenn、Qiita、はてなブログなどに投稿した通知を受け取ることができます。
             </p>
             <ul>
               <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>

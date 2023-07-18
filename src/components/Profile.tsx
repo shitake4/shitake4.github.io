@@ -1,5 +1,7 @@
-import {FaGithub, FaTwitter} from "react-icons/fa";
+import {FaGithub, FaRss, FaTwitter} from "react-icons/fa";
 import {Member} from "@src/types";
+import React from "react";
+import {config} from "@site.config";
 
 type Props = {
   member: Member;
@@ -50,6 +52,15 @@ export const Profile: React.FC<Props> = (props) => {
                 />
               </a>
           )}
+          <a
+              href={`${config.siteRoot}/feed`}
+              className="member-header__link"
+          >
+            <FaRss
+                className="member-header__link-icon"
+                aria-label={`Follow shitake4.tech`}
+            />
+          </a>
         </div>
       </header>
   );
