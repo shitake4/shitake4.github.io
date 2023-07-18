@@ -3,7 +3,7 @@ import { Member } from "@src/types";
 export const members: Member[] = [
   {
     id: "shitake4",
-    name: "しいたけ",
+    name: "しいたけ@shitake4",
     role: "software engineer",
     bio: "ソフトウェアエンジニア / Scrum Inc.認定スクラムマスター, 認定プロダクトオーナーとしてソフトウェア開発しています。現場で得た知見、Railsのコードリーディングなどをブログで書いていたりします",
     avatarSrc: "/avatars/shitake4.png",
