@@ -21,6 +21,22 @@ const Page: NextPage<Props> = (props) => {
           <h1 className="about__title">About</h1>
           <Profile member={props.member}/>
 
+          <div className="about__body">
+            <p>
+              このサイトはこれまで私が投稿した記事を一覧にまとめて表示しています。
+            </p>
+            <p>
+              更新が気になる方はRSSを登録して頂ければnote、Zenn、Qiita、はてなブログなどに投稿した通知を受け取ることができます。
+            </p>
+            <ul>
+              <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
+              <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
+              <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
+              <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
+              {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
+            </ul>
+          </div>
+
           <div className="about__actions">
             <LinkBackHome />
           </div>
