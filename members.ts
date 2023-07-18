@@ -12,7 +12,7 @@ export const members: Member[] = [
       // "https://shitake4.medium.com/feed",
       // "https://note.com/tkggood/rss",
       "https://speakerdeck.com/shitake4.atom",
-      "https://blog.shitake4.tech/feed",
+      "https://blog.shitake4.tech/feed?size=100",
       "https://qiita.com/shitake4/feed",
     ],
     // includeUrlRegex: "medium.com|zenn.dev|qiita.com|blog.shitake4.tech",
