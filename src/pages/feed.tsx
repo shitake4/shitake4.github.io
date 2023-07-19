@@ -1,21 +1,15 @@
-import {GetServerSidePropsContext} from "next";
 import {Feed} from "feed";
 import {config} from "@site.config";
 import {members} from "@members";
 import {getMemberPostsById} from "@src/utils/helper";
+import React from "react";
+import fs from "fs-extra";
+import {GetStaticProps} from "next";
 
-export const getServerSideProps = async ({res}: GetServerSidePropsContext) => {
-  const xml = await generateFeedXml();
-
-  res.statusCode = 200;
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // 24時間キャッシュする
-  res.setHeader('Content-Type', 'text/xml');
-  res.end(xml);
-
-  return {
-    props: {},
-  };
-};
+export const getStaticProps: GetStaticProps = async () => {
+  generateFeedXml();
+  return {props: {}}
+}
 
 async function generateFeedXml() {
   const date = new Date();
@@ -50,8 +44,12 @@ async function generateFeedXml() {
       link: post.link,
     }));
   })
-  return feed.rss2();
+
+  fs.writeFileSync('public/feed.xml', feed.rss2())
+  fs.writeFileSync('public/feed.json', feed.json1())
+  fs.writeFileSync('public/atom.xml', feed.atom1())
+  return;
 }
 
-const Page = () => null;
+const Page = () => null
 export default Page;
