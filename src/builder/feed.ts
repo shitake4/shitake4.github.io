@@ -1,17 +1,9 @@
 import {Feed} from "feed";
-import {config} from "@site.config";
-import {members} from "@members";
-import {getMemberPostsById} from "@src/utils/helper";
-import React from "react";
+import {config} from "../../site.config";
 import fs from "fs-extra";
-import {GetStaticProps} from "next";
+import {PostItem} from "../types";
 
-export const getStaticProps: GetStaticProps = async () => {
-  generateFeedXml();
-  return {props: {}}
-}
-
-async function generateFeedXml() {
+async function generateFeed() {
   const date = new Date();
   const author = {
     name: 'shitake4',
@@ -35,8 +27,9 @@ async function generateFeedXml() {
     author: author,
   });
 
-  const postItems = getMemberPostsById(members[0].id);
-  postItems?.forEach((post) => {
+  // const jsonString =
+  const posts = fs.readJsonSync('.contents/posts.json') as PostItem[]
+  posts?.forEach((post) => {
     feed.addItem(({
       title: post.title,
       description: post.contentSnippet,
@@ -44,12 +37,13 @@ async function generateFeedXml() {
       link: post.link,
     }));
   })
-
-  fs.writeFileSync('public/feed.xml', feed.rss2())
-  fs.writeFileSync('public/feed.json', feed.json1())
-  fs.writeFileSync('public/atom.xml', feed.atom1())
-  return;
+  return feed;
 }
 
-const Page = () => null
-export default Page;
+(async function () {
+  const feed = await generateFeed()
+  fs.ensureDirSync('.public')
+  fs.writeFileSync('public/feed.xml', feed.rss2());
+  fs.writeJsonSync('public/feed.json', feed.json1());
+  fs.writeFileSync('public/atom.xml', feed.atom1());
+})();
