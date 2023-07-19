@@ -53,7 +53,7 @@ export const Profile: React.FC<Props> = (props) => {
               </a>
           )}
           <a
-              href={`${config.siteRoot}/feed`}
+              href={`${config.siteRoot}/feed.xml`}
               className="member-header__link"
           >
             <FaRss
