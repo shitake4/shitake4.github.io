@@ -24,18 +24,26 @@ const Page: NextPage<Props> = (props) => {
 
           <div className="about__body">
             <p>
-              このサイトはこれまで私が投稿した記事を一覧にまとめて表示しています。
+              私 がZenn、Qiita、Medium、note、はてなブログなどに投稿した記事を一覧にまとめて表示します。
             </p>
             <p>
-              更新が気になる方は<a href={`${config.siteRoot}/feed`}>RSSを登録</a>して頂ければnote、Zenn、Qiita、はてなブログなどに投稿した通知を受け取ることができます。
+              取得しているサイト一覧
+              <ul>
+                <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
+                <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
+                <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
+                <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
+                {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
+              </ul>
             </p>
-            <ul>
-              <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
-              <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
-              <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
-              <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
-              {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
-            </ul>
+            <p>
+              RSSフィードを提供しています。
+              <ul>
+                <li><a href={`${config.siteRoot}/feed.xml`}>{config.siteRoot}/feed.xml</a></li>
+                <li><a href={`${config.siteRoot}/feed.json`}>{config.siteRoot}/feed.xml</a></li>
+                <li><a href={`${config.siteRoot}/atom.xml`}>{config.siteRoot}/feed.xml</a></li>
+              </ul>
+            </p>
           </div>
 
           <div className="about__actions">
