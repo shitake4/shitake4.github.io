@@ -10,7 +10,7 @@ export const members: Member[] = [
     sources: [
       // "https://zenn.dev/shitake4/feed",
       // "https://shitake4.medium.com/feed",
-      // "https://note.com/shitake4_/rss",
+      "https://note.com/shitake4_/rss",
       "https://speakerdeck.com/shitake4.atom",
       "https://blog.shitake4.tech/feed?size=100",
       "https://qiita.com/shitake4/feed",
