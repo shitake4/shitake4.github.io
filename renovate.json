@@ -5,12 +5,9 @@
     ":timezone(Asia/Tokyo)",
     ":prHourlyLimitNone"
   ],
-  "dependencyDashboard": false,
+  "dependencyDashboard": true,
   "schedule": [
     "every weekend"
-  ],
-  "automergeSchedule": [
-    "at any time"
   ],
   "major": {
     "enabled": false
@@ -23,7 +20,7 @@
         "pin",
         "digest"
       ],
-      "automerge": true
+      "automerge": false
     },
     {
       "matchUpdateTypes": [
@@ -36,7 +33,20 @@
         "eslint"
       ],
       "groupName": "eslint",
-      "automerge": true
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "matchPackagePatterns": [
+        "react"
+      ],
+      "groupName": "react",
+      "automerge": false
     }
   ]
 }
