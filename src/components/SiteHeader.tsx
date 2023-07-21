@@ -7,7 +7,7 @@ export const SiteHeader: React.FC = () => (
   <header className="site-header">
     <ContentWrapper>
       <div className="site-header__inner">
-        <Link href="/" passHref>
+        <Link legacyBehavior href="/" passHref>
           <a className="site-header__logo-link">
             <img
               src="/logo.svg"
@@ -21,7 +21,7 @@ export const SiteHeader: React.FC = () => (
             const key = `header-link-${i}`;
             if (link.href.startsWith("/")) {
               return (
-                <Link key={key} href={link.href} passHref>
+                <Link legacyBehavior key={key} href={link.href} passHref>
                   <a className="site-header__link">{link.title}</a>
                 </Link>
               );

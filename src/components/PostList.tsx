@@ -20,7 +20,7 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
 
   return (
     <article className="post-link">
-      <Link href={link} >
+      <Link legacyBehavior href={link} >
         <a className="post-link__author">
           <div className="post-link__author-name">
             <time dateTime={isoDate} className="post-link__date">

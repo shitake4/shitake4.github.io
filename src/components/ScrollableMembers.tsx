@@ -6,7 +6,7 @@ export const ScrollableMembers: React.FC = () => {
   return (
     <div className="scrollable-members">
       {members.map((member, i) => (
-        <Link
+        <Link legacyBehavior
           key={`scrollable-member-${i}`}
           href={getMemberPath(member.id)}
           passHref
