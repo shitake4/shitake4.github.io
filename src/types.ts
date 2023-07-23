@@ -12,6 +12,29 @@ export type Member = {
   websiteUrl?: string;
 };
 
+export type Author = {
+  id: string;
+  name: string;
+  avatarSrc: string;
+  role?: string;
+  bio?: string;
+  sources?: string[];
+  includeUrlRegex?: string;
+  excludeUrlRegex?: string;
+  websiteUrl?: string;
+  github?: SaaS;
+  twitter?: SaaS;
+  zenn?: SaaS;
+  note?: SaaS;
+  speakerdeck?: SaaS;
+  qiita?: SaaS;
+  medium?: SaaS;
+};
+
+type SaaS = {
+  userName: string;
+}
+
 export type PostItem = {
   authorId: string;
   authorName: string;
