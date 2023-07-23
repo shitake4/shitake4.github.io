@@ -6,7 +6,7 @@ import {Profile} from "@src/components/Profile";
 import {Member} from "@src/types";
 import {GetStaticProps} from "@node_modules/next";
 import {members} from "@members";
-import {getMemberById, getMemberPostsById} from "@src/utils/helper";
+import {getMemberById} from "@src/utils/helper";
 import {config} from "@site.config";
 
 type Props = {

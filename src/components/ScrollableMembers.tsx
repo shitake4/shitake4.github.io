@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { members } from "@members";
 import { getMemberPath } from "@src/utils/helper";
+import React from "react";
 
 export const ScrollableMembers: React.FC = () => {
   return (

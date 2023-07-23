@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import { config } from "@site.config";
+import React from "react";
 
 // types
 type Props = {
