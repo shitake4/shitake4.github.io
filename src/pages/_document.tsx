@@ -9,7 +9,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <GoogleTagManager googleTagManagerId={getGoogleTagManagerId() as GoogleTagManagerId}/>
           <Link
             rel="icon shortcut"
             type="image/png"
