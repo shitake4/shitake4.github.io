@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import Parser from "rss-parser";
-import { members } from "../../members";
-import { PostItem, Member } from "../types";
+import {members} from "../../members";
+import {Member, PostItem} from "../types";
 
 type FeedItem = {
   title: string;
@@ -13,7 +13,7 @@ type FeedItem = {
 
 function isValidUrl(str: string): boolean {
   try {
-    const { protocol } = new URL(str);
+    const {protocol} = new URL(str);
     return protocol === "http:" || protocol === "https:";
   } catch {
     return false;
@@ -29,18 +29,18 @@ async function fetchFeedItems(url: string) {
 
   // return item which has title and link
   return feed.items
-    .map(({ title, contentSnippet, link, isoDate }) => {
-      return {
-        title,
-        contentSnippet: contentSnippet?.replace(/\n/g, ""),
-        link,
-        isoDate,
-        dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
-      };
-    })
-    .filter(
-      ({ title, link }) => title && link && isValidUrl(link)
-    ) as FeedItem[];
+      .map(({title, contentSnippet, link, isoDate}) => {
+        return {
+          title,
+          contentSnippet: contentSnippet?.replace(/\n/g, ""),
+          link,
+          isoDate,
+          dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
+        };
+      })
+      .filter(
+          ({title, link}) => title && link && isValidUrl(link)
+      ) as FeedItem[];
 }
 
 async function getFeedItemsFromSources(sources: undefined | string[]) {
@@ -54,7 +54,7 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
 }
 
 async function getMemberFeedItems(member: Member): Promise<PostItem[]> {
-  const { id, sources, name, includeUrlRegex, excludeUrlRegex } = member;
+  const {id, sources, name, includeUrlRegex, excludeUrlRegex} = member;
   const feedItems = await getFeedItemsFromSources(sources);
   if (!feedItems) return [];
 
