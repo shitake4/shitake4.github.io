@@ -1,6 +1,7 @@
 import { PostItem } from "@src/types";
 import { members } from "@members";
 import posts from "@.contents/posts.json";
+import * as process from "process";
 
 export function getMemberByName(name: string) {
   return members.find((member) => member.name === name);
@@ -19,4 +20,8 @@ export function getFaviconSrcFromOrigin(hostname: string) {
 }
 export function getMemberPath(id: string) {
   return `/members/${encodeURIComponent(id)}`;
+}
+
+export function getGoogleTagManagerId() {
+  return process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || '';
 }

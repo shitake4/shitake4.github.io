@@ -1,12 +1,15 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { config } from "@site.config";
 import Link from "next/link";
+import GoogleTagManager, {GoogleTagManagerId} from "@src/components/GoogleTagManager";
+import {getGoogleTagManagerId} from "@src/utils/helper";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
+          <GoogleTagManager googleTagManagerId={getGoogleTagManagerId() as GoogleTagManagerId}/>
           <Link
             rel="icon shortcut"
             type="image/png"
