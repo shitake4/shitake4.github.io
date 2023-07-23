@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import Parser from "rss-parser";
-import {members} from "../../members";
-import {Member, PostItem} from "../types";
+import {Author, PostItem} from "../types";
+import {author} from "../../author";
 
 type FeedItem = {
   title: string;
@@ -53,8 +53,8 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
   return feedItems;
 }
 
-async function getMemberFeedItems(member: Member): Promise<PostItem[]> {
-  const {id, sources, name, includeUrlRegex, excludeUrlRegex} = member;
+async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
+  const {authorId, sources, name, includeUrlRegex, excludeUrlRegex} = author;
   const feedItems = await getFeedItemsFromSources(sources);
   if (!feedItems) return [];
 
@@ -62,7 +62,7 @@ async function getMemberFeedItems(member: Member): Promise<PostItem[]> {
     return {
       ...item,
       authorName: name,
-      authorId: id,
+      authorId: authorId,
     };
   });
   // remove items which not matches includeUrlRegex
@@ -82,10 +82,8 @@ async function getMemberFeedItems(member: Member): Promise<PostItem[]> {
 }
 
 (async function () {
-  for (const member of members) {
-    const items = await getMemberFeedItems(member);
-    if (items) allPostItems = [...allPostItems, ...items];
-  }
+  const items = await getMemberFeedItems(author);
+  if (items) allPostItems = [...allPostItems, ...items];
   allPostItems.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
   fs.ensureDirSync(".contents");
   fs.writeJsonSync(".contents/posts.json", allPostItems);

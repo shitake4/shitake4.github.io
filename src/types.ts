@@ -13,6 +13,7 @@ export type Member = {
 };
 
 export type Author = {
+  authorId: string;
   name: string;
   avatarSrc: string;
   role?: string;
