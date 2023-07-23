@@ -13,7 +13,6 @@ export type Member = {
 };
 
 export type Author = {
-  id: string;
   name: string;
   avatarSrc: string;
   role?: string;
@@ -29,6 +28,9 @@ export type Author = {
   speakerdeck?: SaaS;
   qiita?: SaaS;
   medium?: SaaS;
+  wantedly?: SaaS;
+  youtrust?: SaaS;
+  linkedIn?: SaaS;
 };
 
 type SaaS = {
