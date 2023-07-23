@@ -7,7 +7,7 @@ type Props = {
   googleTagManagerId: GoogleTagManagerId;
 };
 
-const GoogleTagManager: React.FC<Props> = (googleTagManagerId) => {
+const GoogleTagManager: React.FC<Props> = ({googleTagManagerId: googleTagManagerId}) => {
   return (
       <Script
           id="gtm"
