@@ -5,9 +5,9 @@ export const config = {
     description: "A comprehensive site to retrieve shitake4 articles.",
   },
   siteRoot:
-    process.env.NODE_ENV === "production"
-      ? "https://shitake4.tech"
-      : "http://localhost:3000",
+      process.env.NODE_ENV === "production"
+          ? "https://shitake4.tech"
+          : "http://localhost:3000",
   headerLinks: [
     {
       title: "About",

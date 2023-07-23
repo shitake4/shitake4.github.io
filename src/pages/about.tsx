@@ -1,7 +1,7 @@
-import { NextPage } from "next";
-import { ContentWrapper } from "@src/components/ContentWrapper";
-import { LinkBackHome } from "@src/components/LinkBackHome";
-import { PageSEO } from "@src/components/PageSEO";
+import {NextPage} from "next";
+import {ContentWrapper} from "@src/components/ContentWrapper";
+import {LinkBackHome} from "@src/components/LinkBackHome";
+import {PageSEO} from "@src/components/PageSEO";
 import {Profile} from "@src/components/Profile";
 import {Member} from "@src/types";
 import {GetStaticProps} from "@node_modules/next";
@@ -15,39 +15,39 @@ type Props = {
 
 const Page: NextPage<Props> = (props) => {
   return (
-    <>
-      <PageSEO title="About" path="/about" />
-      <ContentWrapper>
-        <section className="about">
-          <h1 className="about__title">About</h1>
-          <Profile member={props.member}/>
+      <>
+        <PageSEO title="About" path="/about"/>
+        <ContentWrapper>
+          <section className="about">
+            <h1 className="about__title">About</h1>
+            <Profile member={props.member}/>
 
-          <div className="about__body">
-            <p>
-              私 がZenn、Qiita、Medium、note、はてなブログなどに投稿した記事を一覧にまとめて表示します。
-            </p>
-            <p>取得しているサイト一覧</p>
-            <ul>
-              <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
-              <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
-              <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
-              <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
-              {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
-            </ul>
-            <p>RSSフィードを提供しています。</p>
-            <ul>
-              <li><a href={`${config.siteRoot}/feed.xml`}>{config.siteRoot}/feed.xml</a></li>
-              <li><a href={`${config.siteRoot}/feed.json`}>{config.siteRoot}/feed.xml</a></li>
-              <li><a href={`${config.siteRoot}/atom.xml`}>{config.siteRoot}/feed.xml</a></li>
-            </ul>
-          </div>
+            <div className="about__body">
+              <p>
+                私 がZenn、Qiita、Medium、note、はてなブログなどに投稿した記事を一覧にまとめて表示します。
+              </p>
+              <p>取得しているサイト一覧</p>
+              <ul>
+                <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
+                <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
+                <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
+                <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
+                {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
+              </ul>
+              <p>RSSフィードを提供しています。</p>
+              <ul>
+                <li><a href={`${config.siteRoot}/feed.xml`}>{config.siteRoot}/feed.xml</a></li>
+                <li><a href={`${config.siteRoot}/feed.json`}>{config.siteRoot}/feed.xml</a></li>
+                <li><a href={`${config.siteRoot}/atom.xml`}>{config.siteRoot}/feed.xml</a></li>
+              </ul>
+            </div>
 
-          <div className="about__actions">
-            <LinkBackHome />
-          </div>
-        </section>
-      </ContentWrapper>
-    </>
+            <div className="about__actions">
+              <LinkBackHome/>
+            </div>
+          </section>
+        </ContentWrapper>
+      </>
   );
 };
 

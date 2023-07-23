@@ -1,13 +1,10 @@
-import {NextPage, GetStaticProps} from "next";
+import {GetStaticProps, NextPage} from "next";
 import {members} from "@members";
-import {PostItem, Member} from "@src/types";
+import {Member, PostItem} from "@src/types";
 import {PostList} from "@src/components/PostList";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
-import {
-  getMemberById,
-  getMemberPostsById,
-} from "@src/utils/helper";
+import {getMemberById, getMemberPostsById,} from "@src/utils/helper";
 import {config} from "@site.config";
 import {Profile} from "@src/components/Profile";
 

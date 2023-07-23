@@ -1,5 +1,5 @@
-import { PostItem } from "@src/types";
-import { members } from "@members";
+import {PostItem} from "@src/types";
+import {members} from "@members";
 import posts from "@.contents/posts.json";
 import * as process from "process";
 
@@ -18,6 +18,7 @@ export function getMemberPostsById(id: string) {
 export function getFaviconSrcFromOrigin(hostname: string) {
   return `https://www.google.com/s2/favicons?sz=32&domain_url=${hostname}`;
 }
+
 export function getMemberPath(id: string) {
   return `/members/${encodeURIComponent(id)}`;
 }
