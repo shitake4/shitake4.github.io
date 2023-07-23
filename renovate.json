@@ -5,9 +5,14 @@
     ":timezone(Asia/Tokyo)",
     ":prHourlyLimitNone"
   ],
-  "dependencyDashboard": true,
+  "dependencyDashboard": false,
   "schedule": [
+    "after 10pm every weekday",
+    "before 5am every weekday",
     "every weekend"
+  ],
+  "automergeSchedule": [
+    "at any time"
   ],
   "major": {
     "enabled": false
@@ -20,7 +25,7 @@
         "pin",
         "digest"
       ],
-      "automerge": false
+      "automerge": true
     },
     {
       "matchUpdateTypes": [
@@ -33,7 +38,7 @@
         "eslint"
       ],
       "groupName": "eslint",
-      "automerge": false
+      "automerge": true
     },
     {
       "matchUpdateTypes": [
@@ -46,7 +51,7 @@
         "react"
       ],
       "groupName": "react",
-      "automerge": false
+      "automerge": true
     }
   ]
 }
