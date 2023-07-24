@@ -5,7 +5,7 @@ import React from "react";
 export const SiteFooter: React.FC = () => (
     <footer className="site-footer">
       <ContentWrapper>
-        <p>© {config.siteMeta.teamName}</p>
+        <p>© {config.siteMeta.author}</p>
       </ContentWrapper>
     </footer>
 );

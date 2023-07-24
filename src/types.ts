@@ -15,6 +15,7 @@ export type Member = {
 export type Author = {
   authorId: string;
   name: string;
+  email: string;
   avatarSrc: string;
   role?: string;
   bio?: string;

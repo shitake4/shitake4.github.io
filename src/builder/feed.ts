@@ -2,14 +2,11 @@ import {Feed} from "feed";
 import {config} from "../../site.config";
 import fs from "fs-extra";
 import {PostItem} from "../types";
+import {author} from "../../author";
 
 async function generateFeed() {
   const date = new Date();
-  const author = {
-    name: 'shitake4',
-    email: 'dev.t.suzuki@gmail.com',
-    link: 'https://shitake4.tech',
-  };
+  const {authorId,email, websiteUrl} = author
   const feed = new Feed({
     title: config.siteMeta.title,
     description: config.siteMeta.description,
@@ -17,14 +14,14 @@ async function generateFeed() {
     link: config.siteRoot,
     language: 'ja',
     image: `${config.siteRoot}/logo.png`,
-    copyright: `All rights reserved ${date.getFullYear()}, ${author.name}`,
+    copyright: `All rights reserved ${date.getFullYear()}, ${config.siteMeta.author}`,
     updated: date,
     feedLinks: {
       rss2: `${config.siteRoot}/rss/feed.xml`,
       json: `${config.siteRoot}/rss/feed.json`,
       atom: `${config.siteRoot}/rss/atom.xml`,
     },
-    author: author,
+    author: {name: authorId, email: email, link: websiteUrl},
   });
 
   // const jsonString =

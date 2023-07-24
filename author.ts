@@ -3,6 +3,8 @@ import {Author} from "@src/types";
 export const author: Author = {
   authorId: "shitake4",
   name: "しいたけ@shitake4",
+  email: 'dev.t.suzuki@gmail.com',
+  websiteUrl: "https://shitake4.tech",
   role: "software engineer",
   bio: "ソフトウェアエンジニア / Scrum Inc.認定スクラムマスター, 認定プロダクトオーナーとしてソフトウェア開発しています。現場で得た知見、Railsのコードリーディングなどをブログで書いていたりします",
   avatarSrc: "/avatars/shitake4.png",
@@ -25,5 +27,4 @@ export const author: Author = {
       rss: {url: 'https://blog.shitake4.tech/feed?size=100'}
     },
   ],
-  websiteUrl: "https://shitake4.tech",
 };
