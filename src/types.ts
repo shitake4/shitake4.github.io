@@ -22,20 +22,20 @@ export type Author = {
   includeUrlRegex?: string;
   excludeUrlRegex?: string;
   websiteUrl?: string;
-  github?: SaaS;
-  twitter?: SaaS;
-  zenn?: SaaS;
-  note?: SaaS;
-  speakerdeck?: SaaS;
-  qiita?: SaaS;
-  medium?: SaaS;
-  wantedly?: SaaS;
-  youtrust?: SaaS;
-  linkedIn?: SaaS;
+  webServices?: WebService[]
 };
 
-type SaaS = {
-  userName: string;
+export type WebService = {
+  name: string
+  userName: string
+  url?: string
+  rss?: Rss
+}
+
+export type Rss = {
+  url: string
+  includeUrlRegex?: string
+  excludeUrlRegex?: string
 }
 
 export type PostItem = {

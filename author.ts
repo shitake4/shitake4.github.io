@@ -13,12 +13,20 @@ export const author: Author = {
     "https://qiita.com/shitake4/feed",
   ],
   // includeUrlRegex: "medium.com|zenn.dev|qiita.com|blog.shitake4.tech",
-  twitter: {userName: "shitake4"},
-  github: {userName: "shitake4"},
-  zenn: {userName: "shitake4"},
-  note: {userName: "shitake4_"},
-  speakerdeck: {userName: "shitake4"},
-  qiita: {userName: "shitake4"},
-  medium: {userName: "shitake4"},
+  webServices: [
+    {name: 'twitter', userName: "shitake4"},
+    {name: 'github', userName: "shitake4"},
+    {name: 'zenn', userName: "shitake4"},
+    {name: 'note', userName: "shitake4_", rss: {url: 'https://note.com/shitake4_/rss'}},
+    {name: 'speakerdeck', userName: "shitake4", rss: {url: 'https://speakerdeck.com/shitake4.atom'}},
+    {name: 'qiita', userName: "shitake4", rss: {url: 'https://qiita.com/shitake4/feed'}},
+    {name: 'medium', userName: "shitake4"},
+    {
+      name: 'hatenablog',
+      userName: "shitake4",
+      url: 'https://blog.shitake4.tech',
+      rss: {url: 'https://blog.shitake4.tech/feed?size=100'}
+    },
+  ],
   websiteUrl: "https://shitake4.tech",
 };

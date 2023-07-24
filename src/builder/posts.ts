@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import Parser from "rss-parser";
-import {Author, PostItem} from "../types";
+import {Author, PostItem, Rss, WebService} from "../types";
 import {author} from "../../author";
 
 type FeedItem = {
@@ -18,6 +18,14 @@ function isValidUrl(str: string): boolean {
   } catch {
     return false;
   }
+}
+
+function filterRssWebServices(webServices: WebService[]): Rss[] {
+  return webServices
+      .reduce((acc: Rss[], service: WebService) => {
+        if (service.rss) [...acc, service.rss]
+        return acc;
+      },[])
 }
 
 const parser = new Parser();
@@ -54,7 +62,7 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
 }
 
 async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
-  const {authorId, sources, name, includeUrlRegex, excludeUrlRegex} = author;
+  const {authorId, webServices, name} = author;
   const feedItems = await getFeedItemsFromSources(sources);
   if (!feedItems) return [];
 
