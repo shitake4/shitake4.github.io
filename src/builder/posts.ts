@@ -22,21 +22,22 @@ function isValidUrl(str: string): boolean {
 
 function filterRssWebServices(webServices: WebService[]): Rss[] {
   return webServices
-      .reduce((acc: Rss[], service: WebService) => {
-        if (service.rss) [...acc, service.rss]
-        return acc;
-      },[])
+      .reduce((result: Rss[], service: WebService) => {
+        if (service.rss) return [...result, service.rss]
+        return result;
+      }, [])
 }
 
 const parser = new Parser();
 let allPostItems: PostItem[] = [];
 
-async function fetchFeedItems(url: string) {
-  const feed = await parser.parseURL(url);
+async function fetchFeedItems(source: Rss) {
+  const feed = await parser.parseURL(source.url);
   if (!feed?.items?.length) return [];
 
   // return item which has title and link
-  return feed.items
+  return feed
+      .items
       .map(({title, contentSnippet, link, isoDate}) => {
         return {
           title,
@@ -44,18 +45,23 @@ async function fetchFeedItems(url: string) {
           link,
           isoDate,
           dateMiliSeconds: isoDate ? new Date(isoDate).getTime() : 0,
-        };
+        } as FeedItem;
       })
-      .filter(
-          ({title, link}) => title && link && isValidUrl(link)
-      ) as FeedItem[];
+      .filter(({title, link}) => title && link && isValidUrl(link))
+      .filter((item) => {
+        if (source.includeUrlRegex) return item.link.match(new RegExp(source.includeUrlRegex))
+        return true;
+      })
+      .filter((item) => {
+        if (source.excludeUrlRegex) return !item.link.match(new RegExp(source.excludeUrlRegex))
+        return true;
+      })
 }
 
-async function getFeedItemsFromSources(sources: undefined | string[]) {
-  if (!sources?.length) return [];
+async function getFeedItemsFrom(sources: Rss[]) {
   let feedItems: FeedItem[] = [];
-  for (const url of sources) {
-    const items = await fetchFeedItems(url);
+  for (const source of sources) {
+    const items = await fetchFeedItems(source);
     if (items) feedItems = [...feedItems, ...items];
   }
   return feedItems;
@@ -63,30 +69,17 @@ async function getFeedItemsFromSources(sources: undefined | string[]) {
 
 async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
   const {authorId, webServices, name} = author;
-  const feedItems = await getFeedItemsFromSources(sources);
+  const rss = filterRssWebServices(webServices)
+  const feedItems = await getFeedItemsFrom(rss);
   if (!feedItems) return [];
 
-  let postItems = feedItems.map((item) => {
+  return feedItems.map((item) => {
     return {
       ...item,
       authorName: name,
       authorId: authorId,
     };
   });
-  // remove items which not matches includeUrlRegex
-  if (includeUrlRegex) {
-    postItems = postItems.filter((item) => {
-      return item.link.match(new RegExp(includeUrlRegex));
-    });
-  }
-  // remove items which matches excludeUrlRegex
-  if (excludeUrlRegex) {
-    postItems = postItems.filter((item) => {
-      return !item.link.match(new RegExp(excludeUrlRegex));
-    });
-  }
-
-  return postItems;
 }
 
 (async function () {

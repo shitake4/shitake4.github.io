@@ -22,12 +22,12 @@ export type Author = {
   includeUrlRegex?: string;
   excludeUrlRegex?: string;
   websiteUrl?: string;
-  webServices?: WebService[]
+  webServices: WebService[]
 };
 
 export type WebService = {
   name: string
-  userName: string
+  userName?: string
   url?: string
   rss?: Rss
 }
