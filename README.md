@@ -1,4 +1,6 @@
 # shitake4 Blog Hub
+[![Deploy Next.js site to Pages](https://github.com/shitake4/shitake4.github.io/actions/workflows/nextjs.yml/badge.svg)](https://github.com/shitake4/shitake4.github.io/actions/workflows/nextjs.yml)
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/shitake4/shitake4.github.io/main)
 
 私 がZenn、Qiita、Medium、note、はてなブログなどに投稿した記事を一覧にまとめて表示します。  
 以下より、RSSフィードを提供しています。
