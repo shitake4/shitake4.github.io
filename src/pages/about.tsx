@@ -27,17 +27,19 @@ const Page: NextPage<Props> = (props) => {
               </p>
               <p>取得しているサイト一覧</p>
               <ul>
-                <li>Qiita: <a href={'https://qiita.com/shitake4'}>https://qiita.com/shitake4</a></li>
-                <li>Tech blog: <a href={'https://blog.shitake4.tech'}>https://blog.shitake4.tech</a></li>
-                <li>Speakerdeck: <a href={'https://speakerdeck.com/shitake4'}>https://speakerdeck.com/shitake4</a></li>
-                <li>note: <a href={'https://note.com/shitake4_'}>https://note.com/shitake4_</a></li>
-                {/*<li>Zenn: <a href={'https://zenn.dev/shitake4'}>https://zenn.dev/shitake4</a></li>*/}
+                {author.webServices.filter(webService => webService.rss).map((webService, i) => (
+                    <li key={i}>
+                      {webService.name}: <a href={webService.url}>{webService.url}</a>
+                    </li>
+                ))}
               </ul>
               <p>RSSフィードを提供しています。</p>
               <ul>
-                <li><a href={`${config.siteRoot}/feed.xml`}>{config.siteRoot}/feed.xml</a></li>
-                <li><a href={`${config.siteRoot}/feed.json`}>{config.siteRoot}/feed.xml</a></li>
-                <li><a href={`${config.siteRoot}/atom.xml`}>{config.siteRoot}/feed.xml</a></li>
+                {['feed.xml', 'feed.json', '/atom.xml'].map((rssSuffix, i) => (
+                    <li key={i}>
+                      <a href={`${config.siteRoot}/${rssSuffix}`}>{config.siteRoot}/{rssSuffix}</a>
+                    </li>
+                ))}
               </ul>
             </div>
 
