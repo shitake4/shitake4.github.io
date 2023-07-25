@@ -28,8 +28,8 @@ export type Author = {
 
 export type WebService = {
   name: WebServiceName
-  userName?: string
-  url?: string
+  url: string
+  userName: string
   rss?: Rss
 }
 
@@ -42,6 +42,12 @@ export type WebServiceName =
     | 'qiita'
     | 'medium'
     | 'hatenablog'
+    | 'wantedly'
+    | 'linkedin'
+    | 'instagram'
+    | 'facebook'
+    | 'youtube'
+    | 'pixiv'
 
 export type Rss = {
   url: string
