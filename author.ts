@@ -11,7 +11,12 @@ export const author: Author = {
   webServices: [
     {name: 'twitter', userName: "shitake4", url: 'https://twitter.com/shitake4'},
     {name: 'github', userName: "shitake4", url: 'https://github.com/shitake4'},
-    {name: 'zenn', userName: "shitake4", url: 'https://zenn.dev/shitake4'},
+    {
+      name: 'zenn',
+      userName: "shitake4",
+      url: 'https://zenn.dev/shitake4',
+      rss: {url: 'https://zenn.dev/shitake4/feed'}
+    },
     {
       name: 'note',
       userName: "shitake4_",
