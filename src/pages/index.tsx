@@ -1,16 +1,16 @@
 import {GetStaticProps, NextPage} from "next";
-import {members} from "@members";
-import {Member, PostItem} from "@src/types";
+import {Author, Member, PostItem} from "@src/types";
 import {PostList} from "@src/components/PostList";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
-import {getMemberById, getMemberPostsById,} from "@src/utils/helper";
+import posts from "@.contents/posts.json";
 import {config} from "@site.config";
 import {Profile} from "@src/components/Profile";
+import {author} from "@author";
 
 type Props = {
   postItems: PostItem[];
-  member: Member;
+  author: Author;
 };
 
 const Page: NextPage<Props> = (props) => {
@@ -24,7 +24,7 @@ const Page: NextPage<Props> = (props) => {
         />
         <section className="member">
           <ContentWrapper>
-            <Profile member={props.member}/>
+            <Profile author={props.author}/>
 
             <div className="member-posts-container">
               <PostList items={props.postItems}/>
@@ -36,16 +36,10 @@ const Page: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({params}) => {
-  const id = members[0].id;
-  const member = getMemberById(id);
-  const postItems = getMemberPostsById(id);
-
-  if (!member) throw "User not found";
-
   return {
     props: {
-      member,
-      postItems,
+      postItems: posts,
+      author: author,
     },
   };
 };

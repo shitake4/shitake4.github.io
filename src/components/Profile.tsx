@@ -1,10 +1,11 @@
 import {FaGithub, FaRss, FaTwitter} from "react-icons/fa";
-import {Member} from "@src/types";
+import {Author} from "@src/types";
 import React from "react";
 import {config} from "@site.config";
+import {getWebService} from "@src/utils/helper";
 
 type Props = {
-  member: Member;
+  author: Author;
 }
 
 export const Profile: React.FC<Props> = (props) => {
@@ -12,9 +13,11 @@ export const Profile: React.FC<Props> = (props) => {
     name,
     bio,
     avatarSrc,
-    twitterUsername,
-    githubUsername,
-  } = props.member;
+    webServices
+  } = props.author;
+
+  const twitter = getWebService('twitter')
+  const github = getWebService('github')
 
   return (
       <header className="member-header">
@@ -30,25 +33,25 @@ export const Profile: React.FC<Props> = (props) => {
         <h1 className="member-header__name">{name}</h1>
         <p className="member-header__bio">{bio}</p>
         <div className="member-header__links">
-          {twitterUsername && (
+          {twitter && (
               <a
-                  href={`https://twitter.com/${twitterUsername}`}
+                  href={`https://twitter.com/${twitter.userName}`}
                   className="member-header__link"
               >
                 <FaTwitter
                     className="member-header__link-icon"
-                    aria-label={`Follow @${twitterUsername} on Twitter`}
+                    aria-label={`Follow @${twitter.userName} on Twitter`}
                 />
               </a>
           )}
-          {githubUsername && (
+          {github && (
               <a
-                  href={`https://github.com/${githubUsername}`}
+                  href={`https://github.com/${github.userName}`}
                   className="member-header__link"
               >
                 <FaGithub
                     className="member-header__link-icon"
-                    aria-label={`@${githubUsername} on GitHub`}
+                    aria-label={`@${github.userName} on GitHub`}
                 />
               </a>
           )}

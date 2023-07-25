@@ -2,17 +2,13 @@ import React, {useState} from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-
 import {PostItem} from "@src/types";
-import {getFaviconSrcFromOrigin, getMemberById,} from "@src/utils/helper";
+import {getFaviconSrcFromOrigin} from "@src/utils/helper";
 
 dayjs.extend(relativeTime);
 
 const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const {authorId, title, isoDate, link, dateMiliSeconds} = props.item;
-  const member = getMemberById(authorId);
-  if (!member) return null;
-
   const {hostname, origin} = new URL(link);
 
   return (

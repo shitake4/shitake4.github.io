@@ -27,11 +27,21 @@ export type Author = {
 };
 
 export type WebService = {
-  name: string
+  name: WebServiceName
   userName?: string
   url?: string
   rss?: Rss
 }
+
+export type WebServiceName =
+    | 'twitter'
+    | 'github'
+    | 'zenn'
+    | 'note'
+    | 'speakerdeck'
+    | 'qiita'
+    | 'medium'
+    | 'hatenablog'
 
 export type Rss = {
   url: string

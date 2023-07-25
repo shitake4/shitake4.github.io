@@ -3,14 +3,13 @@ import {ContentWrapper} from "@src/components/ContentWrapper";
 import {LinkBackHome} from "@src/components/LinkBackHome";
 import {PageSEO} from "@src/components/PageSEO";
 import {Profile} from "@src/components/Profile";
-import {Member} from "@src/types";
+import {Author} from "@src/types";
 import {GetStaticProps} from "@node_modules/next";
-import {members} from "@members";
-import {getMemberById} from "@src/utils/helper";
 import {config} from "@site.config";
+import {author} from "@author";
 
 type Props = {
-  member: Member;
+  author: Author;
 };
 
 const Page: NextPage<Props> = (props) => {
@@ -20,7 +19,7 @@ const Page: NextPage<Props> = (props) => {
         <ContentWrapper>
           <section className="about">
             <h1 className="about__title">About</h1>
-            <Profile member={props.member}/>
+            <Profile author={props.author}/>
 
             <div className="about__body">
               <p>
@@ -52,14 +51,9 @@ const Page: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({params}) => {
-  const id = members[0].id;
-  const member = getMemberById(id);
-
-  if (!member) throw "User not found";
-
   return {
     props: {
-      member,
+      author,
     },
   };
 };
