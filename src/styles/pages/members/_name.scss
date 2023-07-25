@@ -16,6 +16,10 @@
   max-width: 500px;
   opacity: 0.8;
 }
+.member-header__role {
+  color: var(--color-base-text-lighter);
+  display: block;
+}
 .member-posts-container {
   padding-top: 1rem;
   border-top: solid 1px var(--color-border);

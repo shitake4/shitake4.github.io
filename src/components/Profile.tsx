@@ -12,6 +12,7 @@ type Props = {
 export const Profile: React.FC<Props> = (props) => {
   const {
     name,
+    role,
     bio,
     avatarSrc,
   } = props.author;
@@ -37,6 +38,7 @@ export const Profile: React.FC<Props> = (props) => {
           />
         </div>
         <h1 className="member-header__name">{name}</h1>
+        <span className="member-header__role">{role}</span>
         <p className="member-header__bio">{bio}</p>
         <div className="member-header__links">
           {twitter && (
