@@ -14,7 +14,6 @@ export const Profile: React.FC<Props> = (props) => {
     name,
     bio,
     avatarSrc,
-    webServices
   } = props.author;
 
   const twitter = getWebService('twitter')

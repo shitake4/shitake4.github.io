@@ -1,7 +1,6 @@
 import Script from "next/script";
 import React from "react";
-
-export type GoogleTagManagerId = `GTM-${string}`;
+import {GoogleTagManagerId} from "@src/types";
 
 type Props = {
   googleTagManagerId: GoogleTagManagerId;

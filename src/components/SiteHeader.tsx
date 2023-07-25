@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {config} from "@site.config";
-
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import React from "react";
 

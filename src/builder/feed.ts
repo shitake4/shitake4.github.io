@@ -17,9 +17,9 @@ async function generateFeed() {
     copyright: `All rights reserved ${date.getFullYear()}, ${config.siteMeta.author}`,
     updated: date,
     feedLinks: {
-      rss2: `${config.siteRoot}/rss/feed.xml`,
-      json: `${config.siteRoot}/rss/feed.json`,
-      atom: `${config.siteRoot}/rss/atom.xml`,
+      rss2: `${config.siteRoot}/feed.xml`,
+      json: `${config.siteRoot}/feed.json`,
+      atom: `${config.siteRoot}/atom.xml`,
     },
     author: {name: authorId, email: email, link: websiteUrl},
   });

@@ -8,7 +8,7 @@ import {getFaviconSrcFromOrigin} from "@src/utils/helper";
 dayjs.extend(relativeTime);
 
 const PostLink: React.FC<{ item: PostItem }> = (props) => {
-  const {authorId, title, isoDate, link, dateMiliSeconds} = props.item;
+  const {title, isoDate, link, dateMiliSeconds} = props.item;
   const {hostname, origin} = new URL(link);
 
   return (

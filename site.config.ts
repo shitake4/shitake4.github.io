@@ -10,9 +10,7 @@ export const config = {
       process.env.NODE_ENV === "production"
           ? "https://shitake4.tech"
           : "http://localhost:3000",
-  meta: {
-    googleTagManagerId: "G-P11C5YZ7TW"
-  },
+  googleTagManagerId: "G-P11C5YZ7TW",
   headerLinks: [
     {
       title: "About",

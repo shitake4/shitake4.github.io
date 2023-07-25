@@ -64,3 +64,6 @@ export type PostItem = {
   isoDate?: string;
   dateMiliSeconds: number;
 };
+
+export type GoogleTagManagerId = `GTM-${string}`;
+
