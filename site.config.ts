@@ -2,7 +2,7 @@ import {author} from "./author";
 
 export const config = {
   siteMeta: {
-    title: `${author.authorId} Blog Hub`,
+    title: `${author.authorId} Post Hub`,
     author: author.authorId,
     description: `A comprehensive site to retrieve ${author.authorId} articles.`,
   },
