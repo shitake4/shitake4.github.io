@@ -5,6 +5,7 @@ import "@src/styles/globals.scss";
 import GoogleTagManager from "@src/components/GoogleTagManager";
 import {config} from "@site.config";
 import {GoogleTagManagerId} from "@src/types";
+import React from "react";
 
 export default function MyApp({Component, pageProps}: AppProps) {
   return (
