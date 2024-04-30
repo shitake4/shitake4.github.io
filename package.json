@@ -27,7 +27,7 @@
     "eslint-config-next": "~12.3.0",
     "feed": "~4.2",
     "fs-extra": "~11.2.0",
-    "npm-run-all": "~4.1",
+    "npm-run-all2": "~5.0.0",
     "rss-parser": "~3.13.0",
     "sass": "~1.75.0",
     "ts-node": "~10.9.0",
