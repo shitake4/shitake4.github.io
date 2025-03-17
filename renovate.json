@@ -1,0 +1,57 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":timezone(Asia/Tokyo)",
+    ":prHourlyLimitNone"
+  ],
+  "dependencyDashboard": false,
+  "schedule": [
+    "after 10pm every weekday",
+    "before 5am every weekday",
+    "every weekend"
+  ],
+  "automergeSchedule": [
+    "at any time"
+  ],
+  "major": {
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "matchPackagePatterns": [
+        "eslint"
+      ],
+      "groupName": "eslint",
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "matchPackagePatterns": [
+        "react"
+      ],
+      "groupName": "react",
+      "automerge": true
+    }
+  ]
+}
