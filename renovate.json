@@ -52,6 +52,12 @@
       ],
       "groupName": "react",
       "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "groupName": "github-actions"
     }
   ]
 }
