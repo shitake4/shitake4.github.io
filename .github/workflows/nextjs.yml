@@ -79,8 +79,10 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build posts data and static HTML export
-        run: ${{ steps.detect-package-manager.outputs.runner }} build
+      - name: Build posts
+        run: ${{ steps.detect-package-manager.outputs.runner }} build:posts && ${{ steps.detect-package-manager.outputs.runner }} build:rss
+      - name: Export static HTML
+        run: ${{ steps.detect-package-manager.outputs.runner }} build:next
         env:
           NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
       - name: Upload artifact
