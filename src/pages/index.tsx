@@ -3,7 +3,7 @@ import {Author, Member, PostItem} from "@src/types";
 import {PostList} from "@src/components/PostList";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
-import posts from "@.contents/posts.json";
+import posts from "@contents/posts.json";
 import {config} from "@site.config";
 import {Profile} from "@src/components/Profile";
 import {author} from "@author";

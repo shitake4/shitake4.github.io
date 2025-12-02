@@ -7,9 +7,13 @@ import {getFaviconSrcFromOrigin} from "@src/utils/helper";
 
 dayjs.extend(relativeTime);
 
+const THREE_DAYS_MS = 86400000 * 3;
+const buildTimestamp = Date.now();
+
 const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const {title, isoDate, link, dateMiliSeconds} = props.item;
   const {hostname, origin} = new URL(link);
+  const isNew = dateMiliSeconds && dateMiliSeconds > buildTimestamp - THREE_DAYS_MS;
 
   return (
       <article className="post-link">
@@ -37,7 +41,7 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
               </div>
           )}
         </a>
-        {dateMiliSeconds && dateMiliSeconds > Date.now() - 86400000 * 3 && (
+        {isNew && (
             <div className="post-link__new-label">NEW</div>
         )}
       </article>

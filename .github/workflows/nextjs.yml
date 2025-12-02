@@ -66,6 +66,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+          generator_config_file: next.config.mjs
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -78,14 +79,10 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build posts data
-        run: yarn build
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Build posts data and static HTML export
+        run: ${{ steps.detect-package-manager.outputs.runner }} build
         env:
           NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
