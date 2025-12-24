@@ -37,3 +37,6 @@ yarn-error.log*
 /.contents
 /public/feed.*
 /public/atom.*
+
+# coding agent
+.claude/settings.local.json
