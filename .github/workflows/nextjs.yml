@@ -8,7 +8,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
   schedule:
-    - cron: '* 1,11 * * *'
+    - cron: '0 1,11 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
