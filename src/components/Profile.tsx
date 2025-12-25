@@ -1,4 +1,5 @@
-import {FaGithub, FaRss, FaTwitter} from "react-icons/fa";
+import {FaGithub, FaRss} from "react-icons/fa";
+import {FaXTwitter} from "react-icons/fa6";
 import {Author} from "@src/types";
 import React from "react";
 import {config} from "@site.config";
@@ -17,7 +18,7 @@ export const Profile: React.FC<Props> = (props) => {
     avatarSrc,
   } = props.author;
 
-  const twitter = getWebService('twitter')
+  const x = getWebService('x')
   const github = getWebService('github')
   const wantedly = getWebService('wantedly')
   const linkedin = getWebService('linkedin')
@@ -41,11 +42,11 @@ export const Profile: React.FC<Props> = (props) => {
         <span className="member-header__role">{role}</span>
         <p className="member-header__bio">{bio}</p>
         <div className="member-header__links">
-          {twitter && (
-              <a href={`${twitter.url}`} className="member-header__link">
-                <FaTwitter
+          {x && (
+              <a href={`${x.url}`} className="member-header__link">
+                <FaXTwitter
                     className="member-header__link-icon"
-                    aria-label={`Follow @${twitter.userName} on ${twitter.name}`}
+                    aria-label={`Follow @${x.userName} on ${x.name}`}
                 />
               </a>
           )}

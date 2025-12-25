@@ -9,7 +9,7 @@ export const author: Author = {
   bio: "ソフトウェアエンジニア / Scrum Inc.認定スクラムマスター, 認定プロダクトオーナーとしてソフトウェア開発しています。現場で得た知見、Railsのコードリーディングなどをブログで書いていたりします",
   avatarSrc: "/avatars/shitake4.png",
   webServices: [
-    {name: 'twitter', userName: "shitake4", url: 'https://twitter.com/shitake4'},
+    {name: 'x', userName: "shitake4", url: 'https://x.com/shitake4'},
     {name: 'github', userName: "shitake4", url: 'https://github.com/shitake4'},
     {
       name: 'zenn',

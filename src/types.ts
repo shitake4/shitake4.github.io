@@ -34,7 +34,7 @@ export type WebService = {
 }
 
 export type WebServiceName =
-    | 'twitter'
+    | 'x'
     | 'github'
     | 'zenn'
     | 'note'
