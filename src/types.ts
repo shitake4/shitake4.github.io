@@ -67,3 +67,11 @@ export type PostItem = {
 
 export type GoogleTagManagerId = `GTM-${string}`;
 
+export type Product = {
+  name: string;
+  description: string;
+  thumbnail?: string;
+  githubUrl?: string;
+  landingPageUrl?: string;
+};
+

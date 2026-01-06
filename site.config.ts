@@ -17,6 +17,10 @@ export const config = {
       href: "/about",
     },
     {
+      title: "Products",
+      href: "/products",
+    },
+    {
       title: "Contact",
       href: "https://forms.gle/nrXyTGFiD1ApmUAu7",
     },
