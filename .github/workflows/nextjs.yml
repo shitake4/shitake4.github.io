@@ -79,8 +79,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Run Lint
+        run: ${{ steps.detect-package-manager.outputs.runner }} lint
       - name: Build posts
-        run: ${{ steps.detect-package-manager.outputs.runner }} build:posts && ${{ steps.detect-package-manager.outputs.runner }} build:rss
+        run: ${{ steps.detect-package-manager.outputs.runner }} build:posts
+      - name: Build RSS
+        run: ${{ steps.detect-package-manager.outputs.runner }} build:rss
       - name: Export static HTML
         run: ${{ steps.detect-package-manager.outputs.runner }} build:next
         env:
