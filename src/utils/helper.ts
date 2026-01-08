@@ -7,7 +7,7 @@ export function getMemberPostsById(id: string) {
 }
 
 export function getFaviconSrcFromOrigin(hostname: string) {
-  return `https://www.google.com/s2/favicons?sz=32&domain_url=${hostname}`;
+  return `https://www.google.com/s2/favicons?sz=32&domain_url=${encodeURIComponent(hostname)}`;
 }
 
 export function getWebService(name: WebServiceName){
