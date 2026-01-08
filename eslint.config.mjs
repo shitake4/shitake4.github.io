@@ -5,9 +5,9 @@ const config = [
   {
     files: ["**/*.{js,jsx,mjs,ts,tsx,mts,cts}"],
     rules: {
-      "@next/next/no-img-element": "off",
-      "react-hooks/exhaustive-deps": "off",
-      "react/display-name": "off",
+      "@next/next/no-img-element": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/display-name": "warn",
     },
   },
 ];

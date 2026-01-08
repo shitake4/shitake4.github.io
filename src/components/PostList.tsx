@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {PostItem} from "@src/types";
@@ -30,12 +31,13 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
           <h2 className="post-link__title">{title}</h2>
           {hostname && (
               <div className="post-link__site">
-                <img
+                <Image
                     src={getFaviconSrcFromOrigin(origin)}
                     width={14}
                     height={14}
                     className="post-link__site-favicon"
                     alt={hostname}
+                    unoptimized
                 />
                 {hostname}
               </div>

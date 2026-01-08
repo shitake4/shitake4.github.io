@@ -2,6 +2,7 @@ import {FaGithub, FaRss} from "react-icons/fa";
 import {FaXTwitter} from "react-icons/fa6";
 import {Author} from "@src/types";
 import React from "react";
+import Image from "next/image";
 import {config} from "@site.config";
 import {getWebService} from "@src/utils/helper";
 import {SiFacebook, SiInstagram, SiLinkedin, SiPixiv, SiWantedly, SiYoutube} from "react-icons/si";
@@ -30,7 +31,7 @@ export const Profile: React.FC<Props> = (props) => {
   return (
       <header className="member-header">
         <div className="member-header__avatar">
-          <img
+          <Image
               src={avatarSrc}
               alt={name}
               width={100}

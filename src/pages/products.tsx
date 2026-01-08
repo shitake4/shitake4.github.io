@@ -1,4 +1,5 @@
 import {GetStaticProps, NextPage} from "next";
+import Image from "next/image";
 import {Product} from "@src/types";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
@@ -22,9 +23,11 @@ const Page: NextPage<Props> = (props) => {
               {props.products.map((product, i) => (
                   <div key={i} className="product-card">
                     <div className="product-card__thumbnail">
-                      <img
+                      <Image
                           src={product.thumbnail || "/images/product-default.svg"}
                           alt={product.name}
+                          width={300}
+                          height={200}
                           className="product-card__thumbnail-img"
                       />
                     </div>
