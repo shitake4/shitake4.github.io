@@ -16,7 +16,7 @@
 
 ## Development
 ```bash
-$ yarn install
-$ yarn build
-$ yarn dev
+$ npm install
+$ npm run build
+$ npm run dev
 ```
