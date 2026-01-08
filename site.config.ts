@@ -5,6 +5,9 @@ export const config = {
     title: `${author.authorId} Post Hub`,
     author: author.authorId,
     description: `A comprehensive site to retrieve ${author.authorId} articles.`,
+    locale: "ja_JP",
+    twitterCreator: "@shitake4",
+    twitterSite: "@shitake4",
   },
   siteRoot:
       process.env.NODE_ENV === "production"

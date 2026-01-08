@@ -11,6 +11,7 @@ type Props = {
   ogImageUrl?: string;
   noindex?: boolean;
   removeSiteNameFromTitle?: boolean;
+  ogType?: "website" | "article" | "profile";
 };
 
 export const PageSEO: React.FC<Props> = (props) => {
@@ -21,9 +22,13 @@ export const PageSEO: React.FC<Props> = (props) => {
     ogImageUrl,
     noindex,
     removeSiteNameFromTitle,
+    ogType = "website",
   } = props;
 
   const pageUrl = `${config.siteRoot}${path || ""}`;
+  const imageUrl = ogImageUrl || `${config.siteRoot}/og.png`;
+  const pageDescription = description || config.siteMeta.description;
+
   return (
       <Head>
         <title>
@@ -31,20 +36,25 @@ export const PageSEO: React.FC<Props> = (props) => {
               ? title
               : `${title} | ${config.siteMeta.title}`}
         </title>
+        <meta name="description" content={pageDescription}/>
+
+        {/* Open Graph */}
+        <meta property="og:type" content={ogType}/>
         <meta property="og:title" content={title}/>
+        <meta property="og:description" content={pageDescription}/>
         <meta property="og:url" content={pageUrl}/>
+        <meta property="og:site_name" content={config.siteMeta.title}/>
+        <meta property="og:image" content={imageUrl}/>
+        <meta property="og:locale" content={config.siteMeta.locale}/>
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image"/>
-        <meta property="og:site" content={config.siteMeta.title}/>
-        <meta
-            property="og:image"
-            content={ogImageUrl || `${config.siteRoot}/og.png`}
-        />
-        {!!description && (
-            <>
-              <meta name="description" content={description}/>
-              <meta property="og:description" content={description}/>
-            </>
-        )}
+        <meta name="twitter:site" content={config.siteMeta.twitterSite}/>
+        <meta name="twitter:creator" content={config.siteMeta.twitterCreator}/>
+        <meta name="twitter:title" content={title}/>
+        <meta name="twitter:description" content={pageDescription}/>
+        <meta name="twitter:image" content={imageUrl}/>
+
         {path && <link rel="canonical" href={pageUrl}/>}
         {noindex && <meta name="robots" content="noindex"/>}
       </Head>
