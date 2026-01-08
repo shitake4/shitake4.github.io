@@ -1,10 +1,10 @@
 import {FaGithub, FaRss} from "react-icons/fa";
 import {FaXTwitter} from "react-icons/fa6";
 import {Author} from "@src/types";
-import React from "react";
+import React, {useMemo} from "react";
 import Image from "next/image";
 import {config} from "@site.config";
-import {getWebService} from "@src/utils/helper";
+import {createWebServicesMap} from "@src/utils/helper";
 import {SiFacebook, SiInstagram, SiLinkedin, SiPixiv, SiWantedly, SiYoutube} from "react-icons/si";
 
 type Props = {
@@ -17,16 +17,19 @@ export const Profile: React.FC<Props> = (props) => {
     role,
     bio,
     avatarSrc,
+    webServices,
   } = props.author;
 
-  const x = getWebService('x')
-  const github = getWebService('github')
-  const wantedly = getWebService('wantedly')
-  const linkedin = getWebService('linkedin')
-  const instagram = getWebService('instagram')
-  const facebook = getWebService('facebook')
-  const youtube = getWebService('youtube')
-  const pixiv = getWebService('pixiv')
+  const webServicesMap = useMemo(() => createWebServicesMap(webServices), [webServices]);
+
+  const x = webServicesMap.get('x');
+  const github = webServicesMap.get('github');
+  const wantedly = webServicesMap.get('wantedly');
+  const linkedin = webServicesMap.get('linkedin');
+  const instagram = webServicesMap.get('instagram');
+  const facebook = webServicesMap.get('facebook');
+  const youtube = webServicesMap.get('youtube');
+  const pixiv = webServicesMap.get('pixiv');
 
   return (
       <header className="member-header">
