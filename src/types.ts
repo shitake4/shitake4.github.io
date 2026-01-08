@@ -73,5 +73,6 @@ export type Product = {
   thumbnail?: string;
   githubUrl?: string;
   landingPageUrl?: string;
+  articleUrl?: string;
 };
 

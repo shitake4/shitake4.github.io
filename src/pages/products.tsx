@@ -4,7 +4,7 @@ import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
 import {products} from "@products";
 import {LinkBackHome} from "@src/components/LinkBackHome";
-import {FaGithub, FaExternalLinkAlt} from "react-icons/fa";
+import {FaGithub, FaExternalLinkAlt, FaBook} from "react-icons/fa";
 
 type Props = {
   products: Product[];
@@ -51,6 +51,17 @@ const Page: NextPage<Props> = (props) => {
                           >
                             <FaExternalLinkAlt className="product-card__link-icon"/>
                             Website
+                          </a>
+                      )}
+                      {product.articleUrl && (
+                          <a
+                              href={product.articleUrl}
+                              className="product-card__link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                          >
+                            <FaBook className="product-card__link-icon"/>
+                            開発背景・解説
                           </a>
                       )}
                     </div>
