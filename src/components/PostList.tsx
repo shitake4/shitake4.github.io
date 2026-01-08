@@ -18,14 +18,12 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
 
   return (
       <article className="post-link">
-        <Link legacyBehavior href={link}>
-          <a className="post-link__author">
-            <div className="post-link__author-name">
-              <time dateTime={isoDate} className="post-link__date">
-                {dayjs(isoDate).fromNow()}
-              </time>
-            </div>
-          </a>
+        <Link href={link} className="post-link__author">
+          <div className="post-link__author-name">
+            <time dateTime={isoDate} className="post-link__date">
+              {dayjs(isoDate).fromNow()}
+            </time>
+          </div>
         </Link>
         <a href={link} className="post-link__main-link">
           <h2 className="post-link__title">{title}</h2>
