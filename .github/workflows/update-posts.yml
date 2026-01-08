@@ -1,0 +1,47 @@
+name: Update Posts
+
+on:
+  # 定期実行（1日2回：日本時間 10時と20時）
+  schedule:
+    - cron: '0 1,11 * * *'
+
+  # 手動実行も可能にする
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 25.2.1
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build posts
+        run: npm run build:posts
+
+      - name: Commit and push posts.json if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .contents/posts.json
+          if ! git diff --quiet --cached; then
+            git commit -m "chore: update posts.json with new articles"
+            git push
+            echo "Posts updated and pushed"
+          else
+            echo "No new posts to update"
+          fi
