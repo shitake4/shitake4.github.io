@@ -85,7 +85,36 @@ async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
 (async function () {
   const items = await getMemberFeedItems(author);
   if (items) allPostItems = [...allPostItems, ...items];
-  allPostItems.sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
+
+  // 既存データの読み込み
+  const postsFilePath = ".contents/posts.json";
+  const existingPosts: PostItem[] = fs.existsSync(postsFilePath)
+    ? fs.readJsonSync(postsFilePath)
+    : [];
+
+  // linkをキーとしたMapで重複を管理
+  const postsMap = new Map<string, PostItem>();
+
+  // 既存の投稿を先に追加
+  existingPosts.forEach(post => {
+    postsMap.set(post.link, post);
+  });
+
+  // 新しい投稿を追加（既存のlinkがない場合のみ）
+  let addedCount = 0;
+  allPostItems.forEach(post => {
+    if (!postsMap.has(post.link)) {
+      postsMap.set(post.link, post);
+      addedCount++;
+    }
+  });
+
+  // Mapから配列に変換してソート
+  const mergedPosts = Array.from(postsMap.values())
+    .sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
+
   fs.ensureDirSync(".contents");
-  fs.writeJsonSync(".contents/posts.json", allPostItems);
+  fs.writeJsonSync(postsFilePath, mergedPosts);
+
+  console.log(`Posts updated: total=${mergedPosts.length}, added=${addedCount}`);
 })();

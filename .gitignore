@@ -33,7 +33,6 @@ npm-debug.log*
 .vercel
 
 # generated data
-/.contents
 /public/feed.*
 /public/atom.*
 
