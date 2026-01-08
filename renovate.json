@@ -1,31 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":timezone(Asia/Tokyo)",
-    ":prHourlyLimitNone"
+    "helpers:pinGitHubActionDigests"
   ],
-  "dependencyDashboard": false,
   "schedule": [
     "after 10pm every weekday",
     "before 5am every weekday",
     "every weekend"
   ],
-  "automergeSchedule": [
-    "at any time"
-  ],
-  "major": {
-    "enabled": false
-  },
+  "platformAutomerge": true,
+  "prConcurrentLimit": 2,
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
       "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
+        "major"
       ],
-      "automerge": true
+      "automerge": false
     },
     {
       "matchUpdateTypes": [
@@ -34,23 +27,36 @@
         "pin",
         "digest"
       ],
-      "matchPackagePatterns": [
-        "eslint"
-      ],
-      "groupName": "eslint",
       "automerge": true
     },
     {
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
       "matchUpdateTypes": [
         "minor",
         "patch",
         "pin",
         "digest"
-      ],
-      "matchPackagePatterns": [
-        "react"
       ],
       "groupName": "react",
+      "automerge": true
+    },
+    {
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "groupName": "next",
       "automerge": true
     },
     {
