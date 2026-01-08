@@ -1,5 +1,5 @@
 import {GetStaticProps, NextPage} from "next";
-import {Author, Member, PostItem} from "@src/types";
+import {Author, PostItem} from "@src/types";
 import {PostList} from "@src/components/PostList";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import {PageSEO} from "@src/components/PageSEO";
