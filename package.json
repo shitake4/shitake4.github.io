@@ -12,26 +12,29 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "dayjs": "^1.11.19",
-    "next": "^16.0.6",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-icons": "^5.5.0"
+    "dayjs": "^1.11.21",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-icons": "^5.7.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^24.10.1",
-    "@types/react": "^19.2.7",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.6",
-    "feed": "^5.1.0",
-    "fs-extra": "^11.3.2",
-    "npm-run-all2": "^8.0.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.10",
+    "feed": "^6.0.0",
+    "fs-extra": "^11.3.6",
+    "npm-run-all2": "^9.0.2",
     "rss-parser": "^3.13.0",
-    "sass": "^1.94.2",
+    "sass": "^1.101.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "postcss": "^8.5.19"
+  }
 }

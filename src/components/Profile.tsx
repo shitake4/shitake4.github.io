@@ -1,11 +1,11 @@
-import {FaGithub, FaRss} from "react-icons/fa";
+import {FaGithub, FaLinkedin, FaRss} from "react-icons/fa";
 import {FaXTwitter} from "react-icons/fa6";
 import {Author} from "@src/types";
 import React, {useMemo} from "react";
 import Image from "next/image";
 import {config} from "@site.config";
 import {createWebServicesMap} from "@src/utils/helper";
-import {SiFacebook, SiInstagram, SiLinkedin, SiPixiv, SiWantedly, SiYoutube} from "react-icons/si";
+import {SiFacebook, SiInstagram, SiPixiv, SiWantedly, SiYoutube} from "react-icons/si";
 
 type Props = {
   author: Author;
@@ -79,7 +79,7 @@ export const Profile: React.FC<Props> = (props) => {
                   href={`${linkedin.url}`}
                   className="member-header__link"
               >
-                <SiLinkedin
+                <FaLinkedin
                     className="member-header__link-icon"
                     aria-label={`@${linkedin.userName} on ${linkedin.name}`}
                 />
