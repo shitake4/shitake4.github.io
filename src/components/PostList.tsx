@@ -4,16 +4,16 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {PostItem} from "@src/types";
-import {getFaviconSrcFromOrigin} from "@src/utils/helper";
 
 dayjs.extend(relativeTime);
 
 const THREE_DAYS_MS = 86400000 * 3;
 const buildTimestamp = Date.now();
+const INITIAL_DISPLAY_ITEMS_COUNT = 30;
+const LOAD_MORE_ITEMS_COUNT = 32;
 
 const PostLink: React.FC<{ item: PostItem }> = (props) => {
-  const {title, isoDate, link, dateMiliSeconds} = props.item;
-  const {hostname, origin} = new URL(link);
+  const {title, isoDate, link, dateMiliSeconds, hostname, faviconSrc} = props.item;
   const isNew = dateMiliSeconds && dateMiliSeconds > buildTimestamp - THREE_DAYS_MS;
 
   return (
@@ -30,7 +30,7 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
           {hostname && (
               <div className="post-link__site">
                 <Image
-                    src={getFaviconSrcFromOrigin(origin)}
+                    src={faviconSrc}
                     width={14}
                     height={14}
                     className="post-link__site-favicon"
@@ -49,7 +49,7 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
 };
 
 export const PostList: React.FC<{ items: PostItem[] }> = (props) => {
-  const [displayItemsCount, setDisplayItemsCount] = useState<number>(32);
+  const [displayItemsCount, setDisplayItemsCount] = useState<number>(INITIAL_DISPLAY_ITEMS_COUNT);
   const totalItemsCount = props.items?.length || 0;
   const canLoadMore = totalItemsCount - displayItemsCount > 0;
 
@@ -60,14 +60,14 @@ export const PostList: React.FC<{ items: PostItem[] }> = (props) => {
   return (
       <>
         <div className="post-list">
-          {props.items.slice(0, displayItemsCount).map((item, i) => (
-              <PostLink key={`post-item-${i}`} item={item}/>
+          {props.items.slice(0, displayItemsCount).map((item) => (
+              <PostLink key={item.link} item={item}/>
           ))}
         </div>
         {canLoadMore && (
             <div className="post-list-load">
               <button
-                  onClick={() => setDisplayItemsCount(displayItemsCount + 32)}
+                  onClick={() => setDisplayItemsCount(displayItemsCount + LOAD_MORE_ITEMS_COUNT)}
                   className="post-list-load__button"
               >
                 LOAD MORE

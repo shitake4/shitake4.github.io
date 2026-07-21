@@ -11,6 +11,8 @@ type FeedItem = {
   dateMiliSeconds: number;
 };
 
+type RawPostItem = Omit<PostItem, "hostname" | "faviconSrc">;
+
 function isValidUrl(str: string): boolean {
   try {
     const {protocol} = new URL(str);
@@ -18,6 +20,16 @@ function isValidUrl(str: string): boolean {
   } catch {
     return false;
   }
+}
+
+function getFaviconSrcFromOrigin(origin: string): string {
+  return `https://www.google.com/s2/favicons?sz=32&domain_url=${encodeURIComponent(origin)}`;
+}
+
+// リンクのhostname/favicon URLはリンク文字列から決定的に求まるため、ビルド時に計算しクライアントの計算コストを無くす
+function withLinkMeta(post: RawPostItem): PostItem {
+  const {hostname, origin} = new URL(post.link);
+  return {...post, hostname, faviconSrc: getFaviconSrcFromOrigin(origin)};
 }
 
 function filterRssWebServices(webServices: WebService[]): Rss[] {
@@ -29,7 +41,7 @@ function filterRssWebServices(webServices: WebService[]): Rss[] {
 }
 
 const parser = new Parser();
-let allPostItems: PostItem[] = [];
+let allPostItems: RawPostItem[] = [];
 
 async function fetchFeedItems(source: Rss) {
   const feed = await parser.parseURL(source.url);
@@ -67,7 +79,7 @@ async function getFeedItemsFrom(sources: Rss[]) {
   return feedItems;
 }
 
-async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
+async function getMemberFeedItems(author: Author): Promise<RawPostItem[]> {
   const {authorId, webServices, name} = author;
   const rss = filterRssWebServices(webServices)
   const feedItems = await getFeedItemsFrom(rss);
@@ -88,12 +100,12 @@ async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
 
   // 既存データの読み込み
   const postsFilePath = ".contents/posts.json";
-  const existingPosts: PostItem[] = fs.existsSync(postsFilePath)
+  const existingPosts: RawPostItem[] = fs.existsSync(postsFilePath)
     ? fs.readJsonSync(postsFilePath)
     : [];
 
   // linkをキーとしたMapで重複を管理
-  const postsMap = new Map<string, PostItem>();
+  const postsMap = new Map<string, RawPostItem>();
 
   // 既存の投稿を先に追加
   existingPosts.forEach(post => {
@@ -109,8 +121,9 @@ async function getMemberFeedItems(author: Author): Promise<PostItem[]> {
     }
   });
 
-  // Mapから配列に変換してソート
+  // Mapから配列に変換し、リンクから決定的に求まるhostname/faviconSrcを付与してソート
   const mergedPosts = Array.from(postsMap.values())
+    .map(withLinkMeta)
     .sort((a, b) => b.dateMiliSeconds - a.dateMiliSeconds);
 
   fs.ensureDirSync(".contents");

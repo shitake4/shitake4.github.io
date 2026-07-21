@@ -49,6 +49,8 @@ export type PostItem = {
   contentSnippet?: string;
   isoDate?: string;
   dateMiliSeconds: number;
+  hostname: string;
+  faviconSrc: string;
 };
 
 export type GoogleTagManagerId = `GTM-${string}`;
