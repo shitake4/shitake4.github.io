@@ -7,7 +7,7 @@ export const author: Author = {
   websiteUrl: "https://shitake4.tech",
   role: "software engineer",
   bio: "ソフトウェアエンジニア / Scrum Inc.認定スクラムマスター, 認定プロダクトオーナーとしてソフトウェア開発しています。現場で得た知見、Railsのコードリーディングなどをブログで書いていたりします",
-  avatarSrc: "/avatars/shitake4.png",
+  avatarSrc: "/avatars/shitake4.webp",
   webServices: [
     {name: 'x', userName: "shitake4", url: 'https://x.com/shitake4'},
     {name: 'github', userName: "shitake4", url: 'https://github.com/shitake4'},
