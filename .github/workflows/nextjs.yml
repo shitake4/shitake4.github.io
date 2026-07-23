@@ -10,6 +10,9 @@ on:
     branches:
       - main
 
+  # Runs on pull requests to lint/build as a required status check
+  pull_request:
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -19,17 +22,15 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Allow one concurrent run per ref (so PR runs don't cancel/block the main deployment and vice versa)
 concurrency:
-  group: 'pages'
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-
-    environment: github-pages
 
     steps:
       - name: Checkout
@@ -83,6 +84,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} build
         env:
           NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+      - name: Run HTML Lint
+        run: ${{ steps.detect-package-manager.outputs.runner }} lint:html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
