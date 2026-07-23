@@ -79,12 +79,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Run Lint
         run: ${{ steps.detect-package-manager.outputs.runner }} lint
-      - name: Build posts
-        run: ${{ steps.detect-package-manager.outputs.runner }} build:posts
-      - name: Build RSS
-        run: ${{ steps.detect-package-manager.outputs.runner }} build:rss
-      - name: Export static HTML
-        run: ${{ steps.detect-package-manager.outputs.runner }} build:next
+      - name: Build
+        run: ${{ steps.detect-package-manager.outputs.runner }} build
         env:
           NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
       - name: Upload artifact
