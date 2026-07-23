@@ -6,6 +6,7 @@ import Image from "next/image";
 import {config} from "@site.config";
 import {createWebServicesMap} from "@src/utils/helper";
 import {SiFacebook, SiInstagram, SiPixiv, SiWantedly, SiYoutube} from "react-icons/si";
+import styles from "./Profile.module.scss";
 
 type Props = {
   author: Author;
@@ -32,33 +33,33 @@ export const Profile: React.FC<Props> = (props) => {
   const pixiv = webServicesMap.get('pixiv');
 
   return (
-      <header className="member-header">
-        <div className="member-header__avatar">
+      <header className={styles.header}>
+        <div>
           <Image
               src={avatarSrc}
               alt={name}
               width={100}
               height={100}
-              className="member-header__avatar-img"
+              className={styles.avatarImg}
           />
         </div>
-        <h1 className="member-header__name">{name}</h1>
-        <span className="member-header__role">{role}</span>
-        <p className="member-header__bio">{bio}</p>
-        <div className="member-header__links">
+        <h1 className={styles.name}>{name}</h1>
+        <span className={styles.role}>{role}</span>
+        <p className={styles.bio}>{bio}</p>
+        <div className={styles.links}>
           {x && (
-              <a href={`${x.url}`} className="member-header__link">
+              <a href={`${x.url}`} className={styles.link}>
                 <FaXTwitter
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`Follow @${x.userName} on ${x.name}`}
                 />
               </a>
           )}
           {github && (
               <a href={`${github.url}`}
-                 className="member-header__link">
+                 className={styles.link}>
                 <FaGithub
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${github.userName} on ${github.name}`}
                 />
               </a>
@@ -66,10 +67,10 @@ export const Profile: React.FC<Props> = (props) => {
           {wantedly && (
               <a
                   href={`${wantedly.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <SiWantedly
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${wantedly.userName} on ${wantedly.name}`}
                 />
               </a>
@@ -77,10 +78,10 @@ export const Profile: React.FC<Props> = (props) => {
           {linkedin && (
               <a
                   href={`${linkedin.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <FaLinkedin
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${linkedin.userName} on ${linkedin.name}`}
                 />
               </a>
@@ -88,10 +89,10 @@ export const Profile: React.FC<Props> = (props) => {
           {instagram && (
               <a
                   href={`${instagram.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <SiInstagram
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${instagram.userName} on ${instagram.name}`}
                 />
               </a>
@@ -99,10 +100,10 @@ export const Profile: React.FC<Props> = (props) => {
           {facebook && (
               <a
                   href={`${facebook.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <SiFacebook
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${facebook.userName} on ${facebook.name}`}
                 />
               </a>
@@ -110,10 +111,10 @@ export const Profile: React.FC<Props> = (props) => {
           {youtube && (
               <a
                   href={`${youtube.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <SiYoutube
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${youtube.userName} on ${youtube.name}`}
                 />
               </a>
@@ -121,20 +122,20 @@ export const Profile: React.FC<Props> = (props) => {
           {pixiv && (
               <a
                   href={`${pixiv.url}`}
-                  className="member-header__link"
+                  className={styles.link}
               >
                 <SiPixiv
-                    className="member-header__link-icon"
+                    className={styles.linkIcon}
                     aria-label={`@${pixiv.userName} on ${pixiv.name}`}
                 />
               </a>
           )}
           <a
               href={`${config.siteRoot}/feed.xml`}
-              className="member-header__link"
+              className={styles.link}
           >
             <FaRss
-                className="member-header__link-icon"
+                className={styles.linkIcon}
                 aria-label={`Follow shitake4.tech`}
             />
           </a>

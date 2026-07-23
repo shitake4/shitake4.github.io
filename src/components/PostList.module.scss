@@ -1,21 +1,22 @@
-@use "../utils" as *;
+@use "../styles/utils" as *;
 
 $side-padding: 1.6rem;
 $side-padding-sm: 1rem;
-.post-list-empty {
+
+.empty {
   padding: 5rem 0;
   text-align: center;
   font-weight: 700;
   color: var(--color-base-text-lighter);
   font-size: 1.4rem;
 }
-.post-link {
+.link {
   display: flex;
   flex-flow: column;
   position: relative;
   background: var(--color-base-background-lighter);
 }
-.post-link__author {
+.author {
   padding: 1.6rem $side-padding 0;
   display: flex;
   align-items: center;
@@ -25,7 +26,7 @@ $side-padding-sm: 1rem;
     padding: 1.4rem $side-padding-sm 0;
   }
 }
-.post-link__main-link {
+.mainLink {
   padding: 1.1rem $side-padding 1.5rem;
   flex: 1;
   display: flex;
@@ -34,32 +35,28 @@ $side-padding-sm: 1rem;
     padding: 1rem $side-padding-sm 1.2rem;
   }
 }
-.post-link__date {
+.date {
   color: var(--color-base-text-lighter);
   font-size: 12px;
 }
 
-.post-link__author-img {
-  border-radius: 25%;
-  margin-right: 0.7rem;
-}
-.post-link__title {
+.title {
   font-size: 1.1rem;
   flex: 1;
 }
 
-.post-link__site {
+.site {
   margin-top: 0.9rem;
   color: var(--color-base-text-lighter);
   font-size: 12px;
   display: flex;
   align-items: center;
 }
-.post-link__site-favicon {
+.favicon {
   border-radius: 3px;
   margin-right: 6px;
 }
-.post-link__new-label {
+.newLabel {
   position: absolute;
   right: -5px;
   top: -5px;
@@ -84,11 +81,11 @@ $side-padding-sm: 1rem;
   }
 }
 
-.post-list {
+.list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  .post-link {
+  .link {
     margin-top: 5%;
     width: 47.5%;
     @include mq(sm) {
@@ -97,11 +94,11 @@ $side-padding-sm: 1rem;
     }
   }
 }
-.post-list-load {
+.loadWrapper {
   margin-top: 3rem;
   text-align: center;
 }
-.post-list-load__button {
+.loadButton {
   border: solid 1px var(--color-border);
   padding: 0.9em 2em;
   border-radius: 2.5em;

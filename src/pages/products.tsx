@@ -6,6 +6,7 @@ import {PageSEO} from "@src/components/PageSEO";
 import {products} from "@products";
 import {LinkBackHome} from "@src/components/LinkBackHome";
 import {FaGithub, FaExternalLinkAlt, FaBook} from "react-icons/fa";
+import styles from "./products.module.scss";
 
 type Props = {
   products: Product[];
@@ -16,54 +17,54 @@ const Page: NextPage<Props> = (props) => {
       <>
         <PageSEO title="Products" path="/products"/>
         <ContentWrapper>
-          <section className="products">
-            <h1 className="products__title">Products</h1>
+          <section className={styles.products}>
+            <h1 className={styles.title}>Products</h1>
 
-            <div className="products__list">
+            <div className={styles.list}>
               {props.products.map((product, i) => (
-                  <div key={i} className="product-card">
-                    <div className="product-card__thumbnail">
+                  <div key={i} className={styles.card}>
+                    <div className={styles.thumbnail}>
                       <Image
                           src={product.thumbnail || "/images/product-default.svg"}
                           alt={product.name}
                           width={300}
                           height={200}
-                          className="product-card__thumbnail-img"
+                          className={styles.thumbnailImg}
                       />
                     </div>
-                    <h2 className="product-card__name">{product.name}</h2>
-                    <p className="product-card__description">{product.description}</p>
-                    <div className="product-card__links">
+                    <h2 className={styles.name}>{product.name}</h2>
+                    <p className={styles.description}>{product.description}</p>
+                    <div className={styles.links}>
                       {product.githubUrl && (
                           <a
                               href={product.githubUrl}
-                              className="product-card__link"
+                              className={styles.link}
                               target="_blank"
                               rel="noopener noreferrer"
                           >
-                            <FaGithub className="product-card__link-icon"/>
+                            <FaGithub className={styles.linkIcon}/>
                             GitHub
                           </a>
                       )}
                       {product.landingPageUrl && (
                           <a
                               href={product.landingPageUrl}
-                              className="product-card__link"
+                              className={styles.link}
                               target="_blank"
                               rel="noopener noreferrer"
                           >
-                            <FaExternalLinkAlt className="product-card__link-icon"/>
+                            <FaExternalLinkAlt className={styles.linkIcon}/>
                             Website
                           </a>
                       )}
                       {product.articleUrl && (
                           <a
                               href={product.articleUrl}
-                              className="product-card__link"
+                              className={styles.link}
                               target="_blank"
                               rel="noopener noreferrer"
                           >
-                            <FaBook className="product-card__link-icon"/>
+                            <FaBook className={styles.linkIcon}/>
                             開発背景・解説
                           </a>
                       )}
@@ -72,7 +73,7 @@ const Page: NextPage<Props> = (props) => {
               ))}
             </div>
 
-            <div className="products__actions">
+            <div className={styles.actions}>
               <LinkBackHome/>
             </div>
           </section>

@@ -3,33 +3,34 @@ import Image from "next/image";
 import {config} from "@site.config";
 import {ContentWrapper} from "@src/components/ContentWrapper";
 import React from "react";
+import styles from "./SiteHeader.module.scss";
 
 export const SiteHeader: React.FC = () => (
-    <header className="site-header">
+    <header className={styles.header}>
       <ContentWrapper>
-        <div className="site-header__inner">
-          <Link href="/" className="site-header__logo-link">
+        <div className={styles.inner}>
+          <Link href="/" className={styles.logoLink}>
             <Image
                 src="/logo.svg"
                 alt={config.siteMeta.title}
                 width={150}
                 height={40}
-                className="site-header__logo-img"
+                className={styles.logoImg}
                 unoptimized
             />
           </Link>
-          <div className="site-header__links">
+          <div className={styles.links}>
             {config.headerLinks.map((link, i) => {
               const key = `header-link-${i}`;
               if (link.href.startsWith("/")) {
                 return (
-                    <Link key={key} href={link.href} className="site-header__link">
+                    <Link key={key} href={link.href} className={styles.link}>
                       {link.title}
                     </Link>
                 );
               }
               return (
-                  <a key={key} href={link.href} className="site-header__link">
+                  <a key={key} href={link.href} className={styles.link}>
                     {link.title}
                   </a>
               );

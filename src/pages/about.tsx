@@ -8,6 +8,7 @@ import {GetStaticProps} from "@node_modules/next";
 import {config} from "@site.config";
 import {author} from "@author";
 import {FaRss} from "react-icons/fa";
+import styles from "./about.module.scss";
 
 type Props = {
   author: Author;
@@ -26,60 +27,60 @@ const Page: NextPage<Props> = (props) => {
       <>
         <PageSEO title="About" path="/about"/>
         <ContentWrapper>
-          <section className="about">
-            <h1 className="about__title">About</h1>
+          <section className={styles.about}>
+            <h1 className={styles.title}>About</h1>
             <Profile author={props.author}/>
 
-            <section className="about__section">
-              <h2 className="about__section-title">発信内容</h2>
-              <p className="about__section-text">
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>発信内容</h2>
+              <p className={styles.sectionText}>
                 Webアプリケーション開発を中心に、Rails・プロダクト開発・チームづくりについて発信しています。
               </p>
-              <p className="about__section-text">
+              <p className={styles.sectionText}>
                 実務で得た知見や、設計・実装の判断理由、試行錯誤の過程を言語化することを大切にしています。
               </p>
-              <p className="about__section-text">
+              <p className={styles.sectionText}>
                 媒体ごとに読者や文脈が異なるため、内容に応じて以下のサービスを使い分けています。
               </p>
-              <p className="about__section-text">
+              <p className={styles.sectionText}>
                 Zenn / Qiita / 個人ブログ / note / Speaker Deck
               </p>
             </section>
 
-            <section className="about__section">
-              <h2 className="about__section-title">記事一覧・RSS</h2>
-              <p className="about__section-text">
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>記事一覧・RSS</h2>
+              <p className={styles.sectionText}>
                 これまでに書いた記事は、このサイト上で一覧としてまとめています。
               </p>
-              <p className="about__section-text">
+              <p className={styles.sectionText}>
                 定期的にチェックしたい方は、以下のRSSフィードもご利用ください。
               </p>
-              <div className="about__rss-links">
+              <div className={styles.rssLinks}>
                 {RSS_FEEDS.map((feed, i) => (
                     <a
                         key={i}
                         href={feed.url}
-                        className="about__rss-link"
+                        className={styles.rssLink}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                      <FaRss className="about__rss-icon"/>
+                      <FaRss className={styles.rssIcon}/>
                       {feed.label}
                     </a>
                 ))}
               </div>
             </section>
 
-            <section className="about__section about__section--cta">
-              <h2 className="about__section-title">お問い合わせ</h2>
-              <p className="about__section-text">
+            <section className={`${styles.section} ${styles.sectionCta}`}>
+              <h2 className={styles.sectionTitle}>お問い合わせ</h2>
+              <p className={styles.sectionText}>
                 技術顧問、開発支援、レビューなどのご相談があれば、まずはContactページからお気軽にご連絡ください。
               </p>
               {contactUrl && (
-                  <div className="about__cta">
+                  <div className={styles.cta}>
                     <a
                         href={contactUrl}
-                        className="about__contact-button"
+                        className={styles.contactButton}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -89,7 +90,7 @@ const Page: NextPage<Props> = (props) => {
               )}
             </section>
 
-            <div className="about__actions">
+            <div className={styles.actions}>
               <LinkBackHome/>
             </div>
           </section>

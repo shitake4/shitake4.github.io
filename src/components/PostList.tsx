@@ -4,6 +4,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {PostItem} from "@src/types";
+import styles from "./PostList.module.scss";
 
 dayjs.extend(relativeTime);
 
@@ -17,23 +18,23 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
   const isNew = dateMiliSeconds && dateMiliSeconds > buildTimestamp - THREE_DAYS_MS;
 
   return (
-      <article className="post-link">
-        <Link href={link} className="post-link__author" data-gtm="article">
-          <div className="post-link__author-name">
-            <time dateTime={isoDate} className="post-link__date">
+      <article className={styles.link}>
+        <Link href={link} className={styles.author} data-gtm="article">
+          <div>
+            <time dateTime={isoDate} className={styles.date}>
               {dayjs(isoDate).fromNow()}
             </time>
           </div>
         </Link>
-        <a href={link} className="post-link__main-link" data-gtm="article">
-          <h2 className="post-link__title">{title}</h2>
+        <a href={link} className={styles.mainLink} data-gtm="article">
+          <h2 className={styles.title}>{title}</h2>
           {hostname && (
-              <div className="post-link__site">
+              <div className={styles.site}>
                 <Image
                     src={faviconSrc}
                     width={14}
                     height={14}
-                    className="post-link__site-favicon"
+                    className={styles.favicon}
                     alt={hostname}
                     unoptimized
                 />
@@ -42,7 +43,7 @@ const PostLink: React.FC<{ item: PostItem }> = (props) => {
           )}
         </a>
         {isNew && (
-            <div className="post-link__new-label">NEW</div>
+            <div className={styles.newLabel}>NEW</div>
         )}
       </article>
   );
@@ -54,21 +55,21 @@ export const PostList: React.FC<{ items: PostItem[] }> = (props) => {
   const canLoadMore = totalItemsCount - displayItemsCount > 0;
 
   if (!totalItemsCount) {
-    return <div className="post-list-empty">No posts yet</div>;
+    return <div className={styles.empty}>No posts yet</div>;
   }
 
   return (
       <>
-        <div className="post-list">
+        <div className={styles.list}>
           {props.items.slice(0, displayItemsCount).map((item) => (
               <PostLink key={item.link} item={item}/>
           ))}
         </div>
         {canLoadMore && (
-            <div className="post-list-load">
+            <div className={styles.loadWrapper}>
               <button
                   onClick={() => setDisplayItemsCount(displayItemsCount + LOAD_MORE_ITEMS_COUNT)}
-                  className="post-list-load__button"
+                  className={styles.loadButton}
               >
                 LOAD MORE
               </button>

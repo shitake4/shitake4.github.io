@@ -7,6 +7,7 @@ import posts from "@contents/posts.json";
 import {config} from "@site.config";
 import {Profile} from "@src/components/Profile";
 import {author} from "@author";
+import styles from "./index.module.scss";
 
 type Props = {
   postItems: PostItem[];
@@ -22,11 +23,11 @@ const Page: NextPage<Props> = (props) => {
             path="/"
             removeSiteNameFromTitle={true}
         />
-        <section className="member">
+        <section>
           <ContentWrapper>
             <Profile author={props.author}/>
 
-            <div className="member-posts-container">
+            <div className={styles.postsContainer}>
               <PostList items={props.postItems}/>
             </div>
           </ContentWrapper>
