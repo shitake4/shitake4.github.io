@@ -39,7 +39,7 @@ async function generateFeed() {
 
 (async function () {
   const feed = await generateFeed()
-  fs.ensureDirSync('.public')
+  fs.ensureDirSync('public')
   fs.writeFileSync('public/feed.xml', feed.rss2());
   fs.writeJsonSync('public/feed.json', feed.json1());
   fs.writeFileSync('public/atom.xml', feed.atom1());

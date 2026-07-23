@@ -71,11 +71,27 @@ async function fetchFeedItems(source: Rss) {
 }
 
 async function getFeedItemsFrom(sources: Rss[]) {
+  const results = await Promise.allSettled(sources.map((source) => fetchFeedItems(source)));
+
   let feedItems: FeedItem[] = [];
-  for (const source of sources) {
-    const items = await fetchFeedItems(source);
-    if (items) feedItems = [...feedItems, ...items];
+  let successCount = 0;
+  let failureCount = 0;
+
+  results.forEach((result, index) => {
+    if (result.status === "fulfilled") {
+      successCount++;
+      feedItems = [...feedItems, ...result.value];
+    } else {
+      failureCount++;
+      console.error(`RSS取得に失敗しました: url=${sources[index].url}, error=${result.reason}`);
+    }
+  });
+
+  console.log(`RSS取得結果: success=${successCount}, failure=${failureCount}, total=${sources.length}`);
+  if (sources.length > 0 && successCount === 0) {
+    console.warn("警告: 全てのRSSソースの取得に失敗しました。既存のposts.jsonをそのまま使用します。");
   }
+
   return feedItems;
 }
 
