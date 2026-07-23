@@ -36,5 +36,9 @@
   "license": "MIT",
   "overrides": {
     "postcss": "^8.5.19"
-  }
+  },
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ]
 }
