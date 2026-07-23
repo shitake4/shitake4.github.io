@@ -48,96 +48,77 @@ export const Profile: React.FC<Props> = (props) => {
         <p className={styles.bio}>{bio}</p>
         <div className={styles.links}>
           {x && (
-              <a href={`${x.url}`} className={styles.link}>
-                <FaXTwitter
-                    className={styles.linkIcon}
-                    aria-label={`Follow @${x.userName} on ${x.name}`}
-                />
+              <a href={`${x.url}`} className={styles.link} aria-label={`Follow @${x.userName} on ${x.name}`}>
+                <FaXTwitter className={styles.linkIcon}/>
               </a>
           )}
           {github && (
               <a href={`${github.url}`}
-                 className={styles.link}>
-                <FaGithub
-                    className={styles.linkIcon}
-                    aria-label={`@${github.userName} on ${github.name}`}
-                />
+                 className={styles.link}
+                 aria-label={`@${github.userName} on ${github.name}`}>
+                <FaGithub className={styles.linkIcon}/>
               </a>
           )}
           {wantedly && (
               <a
                   href={`${wantedly.url}`}
                   className={styles.link}
+                  aria-label={`@${wantedly.userName} on ${wantedly.name}`}
               >
-                <SiWantedly
-                    className={styles.linkIcon}
-                    aria-label={`@${wantedly.userName} on ${wantedly.name}`}
-                />
+                <SiWantedly className={styles.linkIcon}/>
               </a>
           )}
           {linkedin && (
               <a
                   href={`${linkedin.url}`}
                   className={styles.link}
+                  aria-label={`@${linkedin.userName} on ${linkedin.name}`}
               >
-                <FaLinkedin
-                    className={styles.linkIcon}
-                    aria-label={`@${linkedin.userName} on ${linkedin.name}`}
-                />
+                <FaLinkedin className={styles.linkIcon}/>
               </a>
           )}
           {instagram && (
               <a
                   href={`${instagram.url}`}
                   className={styles.link}
+                  aria-label={`@${instagram.userName} on ${instagram.name}`}
               >
-                <SiInstagram
-                    className={styles.linkIcon}
-                    aria-label={`@${instagram.userName} on ${instagram.name}`}
-                />
+                <SiInstagram className={styles.linkIcon}/>
               </a>
           )}
           {facebook && (
               <a
                   href={`${facebook.url}`}
                   className={styles.link}
+                  aria-label={`@${facebook.userName} on ${facebook.name}`}
               >
-                <SiFacebook
-                    className={styles.linkIcon}
-                    aria-label={`@${facebook.userName} on ${facebook.name}`}
-                />
+                <SiFacebook className={styles.linkIcon}/>
               </a>
           )}
           {youtube && (
               <a
                   href={`${youtube.url}`}
                   className={styles.link}
+                  aria-label={`@${youtube.userName} on ${youtube.name}`}
               >
-                <SiYoutube
-                    className={styles.linkIcon}
-                    aria-label={`@${youtube.userName} on ${youtube.name}`}
-                />
+                <SiYoutube className={styles.linkIcon}/>
               </a>
           )}
           {pixiv && (
               <a
                   href={`${pixiv.url}`}
                   className={styles.link}
+                  aria-label={`@${pixiv.userName} on ${pixiv.name}`}
               >
-                <SiPixiv
-                    className={styles.linkIcon}
-                    aria-label={`@${pixiv.userName} on ${pixiv.name}`}
-                />
+                <SiPixiv className={styles.linkIcon}/>
               </a>
           )}
           <a
               href={`${config.siteRoot}/feed.xml`}
               className={styles.link}
+              aria-label="Follow shitake4.tech"
           >
-            <FaRss
-                className={styles.linkIcon}
-                aria-label={`Follow shitake4.tech`}
-            />
+            <FaRss className={styles.linkIcon}/>
           </a>
         </div>
       </header>

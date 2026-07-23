@@ -10,7 +10,7 @@ export default function Document() {
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <meta name="theme-color" content="#000000"/>
           <link
-              rel="icon shortcut"
+              rel="icon"
               type="image/png"
               href={`${config.siteRoot}/logo.png`}
           />

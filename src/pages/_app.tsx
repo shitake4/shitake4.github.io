@@ -18,7 +18,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
             <noscript
                 dangerouslySetInnerHTML={{
                   __html: `
-                  <iframe src="https://www.googletagmanager.com/ns.html?id=${config.googleTagManagerId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                  <iframe src="https://www.googletagmanager.com/ns.html?id=${config.googleTagManagerId}" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager" loading="lazy"></iframe>
                   `,
                 }}/>
         )}

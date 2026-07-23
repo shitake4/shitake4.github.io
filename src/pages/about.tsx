@@ -28,7 +28,7 @@ const Page: NextPage<Props> = (props) => {
         <PageSEO title="About" path="/about"/>
         <ContentWrapper>
           <section className={styles.about}>
-            <h1 className={styles.title}>About</h1>
+            <h2 className={styles.title}>About</h2>
             <Profile author={props.author}/>
 
             <section className={styles.section}>

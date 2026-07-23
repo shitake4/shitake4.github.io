@@ -68,6 +68,7 @@ export const PostList: React.FC<{ items: PostItem[] }> = (props) => {
         {canLoadMore && (
             <div className={styles.loadWrapper}>
               <button
+                  type="button"
                   onClick={() => setDisplayItemsCount(displayItemsCount + LOAD_MORE_ITEMS_COUNT)}
                   className={styles.loadButton}
               >
