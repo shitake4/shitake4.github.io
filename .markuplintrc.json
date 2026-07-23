@@ -1,0 +1,15 @@
+{
+  "extends": ["markuplint:recommended-static-html"],
+  "rules": {
+    "require-datetime": false,
+    "ineffective-attr": false
+  },
+  "nodeRules": [
+    {
+      "selector": ":where(head)",
+      "rules": {
+        "required-element": false
+      }
+    }
+  ]
+}
