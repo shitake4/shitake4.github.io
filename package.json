@@ -10,7 +10,10 @@
     "build:sitemap": "ts-node --project tsconfig.builder.json ./src/builder/sitemap.ts",
     "build:next": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:html": "run-s lint:markuplint lint:html-validate",
+    "lint:markuplint": "markuplint \"out/**/*.html\"",
+    "lint:html-validate": "html-validate \"out/**/*.html\""
   },
   "dependencies": {
     "dayjs": "^1.11.21",
@@ -20,14 +23,19 @@
     "react-icons": "^5.7.0"
   },
   "devDependencies": {
+    "@markuplint/html-parser": "^4.18.3",
+    "@markuplint/html-spec": "^4.18.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.10",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "feed": "^6.0.0",
     "fs-extra": "^11.3.6",
+    "html-validate": "^11.5.6",
+    "markuplint": "^4.18.3",
     "npm-run-all2": "^9.0.2",
     "rss-parser": "^3.13.0",
     "sass": "^1.101.0",
