@@ -23,7 +23,9 @@ export default function MyApp({Component, pageProps}: AppProps) {
                 }}/>
         )}
         <SiteHeader/>
-        <Component {...pageProps} />
+        <main>
+          <Component {...pageProps} />
+        </main>
         <SiteFooter/>
       </>
   );
